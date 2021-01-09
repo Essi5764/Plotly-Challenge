@@ -1,7 +1,7 @@
-// create the function that gets the data and creates the plots for the id 
+// Using a function to obtain the data for the plots
 function getPlot(id) {
     
-    // get the data from the json file
+    // Use the D3 library to read in samples.json.
     d3.json("data/samples.json").then((data)=> {
         console.log(data)
 
@@ -13,10 +13,10 @@ function getPlot(id) {
 
         console.log(samples);
 
-        // get only top 10 sample values to plot and reverse for the plotly
+        // Use sample_values as the values for the bar chart.
         var sampleValues = samples.sample_values.slice(0, 10).reverse();
 
-        // get only top 10 otu ids for the plot
+        // Use otu_ids as the labels for the bar chart. Selecting only top 10 otu ids for the plot
         var idValues = (samples.otu_ids.slice(0, 10)).reverse();
         
         // get the otu id's to the desired form for the plot
@@ -24,7 +24,7 @@ function getPlot(id) {
 
         console.log(`OTU IDS: ${idOtu}`)
 
-        // get the top 10 labels for the plot
+        // Use otu_labels as the hovertext for the chart. Selecting the top 10 labels for the plot
         var labels = samples.otu_labels.slice(0, 10);
 
         console.log(`Sample Values: ${sampleValues}`)
@@ -85,7 +85,7 @@ function getPlot(id) {
         // create the data variable 
         var data1 = [trace1];
 
-        // create the bubble plot
+        // Create a bubble chart that displays each sample.
         Plotly.newPlot("bubble", data1, layout); 
 
         // create pie chart
@@ -140,7 +140,7 @@ function init() {
     // select dropdown menu 
     var dropdown = d3.select("#selDataset");
 
-    // read the data 
+    // Use the D3 library to read in samples.json.
     d3.json("data/samples.json").then((data)=> {
         console.log(data)
 
